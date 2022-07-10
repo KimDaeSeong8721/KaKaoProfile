@@ -28,9 +28,7 @@ class ProfileViewController: BaseViewController {
         imageView.layer.cornerRadius = 30
         imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        
         return imageView
-        
     }()
     private let nameLabel : UILabel = {
         let label = UILabel()
@@ -51,13 +49,10 @@ class ProfileViewController: BaseViewController {
         
         return label
     }()
-    
     private let horizontalLine : UIView = {
         let view = UIView()
         view.backgroundColor = .systemGray4
-        //        view.layer.borderWidth = 1
         view.translatesAutoresizingMaskIntoConstraints = false
-        
         return view
     }()
     
@@ -71,7 +66,6 @@ class ProfileViewController: BaseViewController {
         dismissButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
         
         view.addSubview(profileImageView)
-        
         profileImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         profileImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 512).isActive = true
         profileImageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
@@ -131,38 +125,38 @@ class ProfileViewController: BaseViewController {
     }
     
     func modalDismiss() {
-            view.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handleDismiss)))
-        }
+        view.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handleDismiss)))
+    }
     
     @objc func handleDismiss(_ sender: UIPanGestureRecognizer) {
-           
-           viewTranslation = sender.translation(in: view) // 뷰가 이동한 위치 저장
-           viewVelocity = sender.velocity(in: view) //view가 이동한 방향 저장
-           
-           switch sender.state {
-           case .changed:
-               // 상하로 스와이프 할 때 위로 스와이프가 안되게 해주기 위해서 조건 설정
-               if viewVelocity.y > 0 {
-                   UIView.animate(withDuration: 0.1, animations: {
-                       self.view.transform = CGAffineTransform(translationX: 0, y: self.viewTranslation.y)
-                   })
-               }
-           case .ended:
-               // 해당 뷰의 y값이 400보다 작으면(작게 이동 시) 뷰의 위치를 다시 원상복구하겠다. = 즉, 다시 y=0인 지점으로 리셋
-               if viewTranslation.y < 400 {
-                   UIView.animate(withDuration: 0.1, animations: {
-                       self.view.transform = .identity
-                   })
-                   // 뷰의 값이 400 이상이면 해당 화면 dismiss
-               } else {
-                   dismiss(animated: true, completion: nil)
-               }
-               if viewVelocity.y > 300 {
-                   dismiss(animated: true, completion: nil)
-               }
-               
-           default:
-               break
-           }
+        viewTranslation = sender.translation(in: view) // 뷰가 이동한 위치 저장
+        viewVelocity = sender.velocity(in: view) //view가 이동한 방향 저장
+        
+        switch sender.state {
+        case .changed:
+            // 상하로 스와이프 할 때 위로 스와이프가 안되게 해주기 위해서 조건 설정
+            if viewVelocity.y > 0 {
+                UIView.animate(withDuration: 0.1, animations: {
+                    self.view.transform = CGAffineTransform(translationX: 0, y: self.viewTranslation.y)
+                })
+            }
+        case .ended:
+            // 해당 뷰의 y값이 400보다 작으면(작게 이동 시) 뷰의 위치를 다시 원상복구하겠다. = 즉, 다시 y=0인 지점으로 리셋
+            if viewTranslation.y < 400 {
+                UIView.animate(withDuration: 0.1, animations: {
+                    self.view.transform = .identity
+                })
+                // 뷰의 값이 400 이상이면 해당 화면 dismiss
+            } else {
+                dismiss(animated: true, completion: nil)
+            }
+            // 추가로 아래쪽 스와이프의 속도가 초당 300보다 크면 화면 dismiss
+            if viewVelocity.y > 300 {
+                dismiss(animated: true, completion: nil)
+            }
+            
+        default:
+            break
+        }
     }
 }

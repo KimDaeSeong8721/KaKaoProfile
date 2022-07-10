@@ -24,7 +24,7 @@ class ImageLabelView: UIView {
         label.font = .systemFont(ofSize: 10)
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
-
+        
         return label
     }()
     
@@ -52,7 +52,7 @@ class ImageLabelView: UIView {
         textLabel.topAnchor.constraint(equalTo: symbolImageView.bottomAnchor,constant: 11).isActive = true
         textLabel.leadingAnchor.constraint(equalTo: symbolImageView.leadingAnchor).isActive = true
     }
-
-
-
+    
+    
+    
 }
