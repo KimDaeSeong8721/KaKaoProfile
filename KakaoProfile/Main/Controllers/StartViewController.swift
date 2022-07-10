@@ -13,7 +13,6 @@ class StartViewController: BaseViewController {
         let tableView = UITableView()
         tableView.register(PersonTableViewCell.self, forCellReuseIdentifier: PersonTableViewCell.identifier)
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.backgroundColor = .red
         return tableView
     }()
     

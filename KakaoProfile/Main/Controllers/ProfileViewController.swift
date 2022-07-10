@@ -65,7 +65,7 @@ class ProfileViewController: BaseViewController {
     override func render() {
         
         view.addSubview(dismissButton)
-        dismissButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        dismissButton.topAnchor.constraint(equalTo: view.topAnchor,constant: 40).isActive = true
         dismissButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor,constant: 10).isActive = true
         dismissButton.widthAnchor.constraint(equalToConstant: 44).isActive = true
         dismissButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
