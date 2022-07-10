@@ -7,6 +7,8 @@
 
 import UIKit
 
+
+
 class StartViewController: BaseViewController {
 // MARK: - Properties
     let tableView : UITableView = {

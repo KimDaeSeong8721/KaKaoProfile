@@ -106,7 +106,7 @@ class ProfileViewController: BaseViewController {
         third.widthAnchor.constraint(equalToConstant: 44).isActive = true
         third.heightAnchor.constraint(equalToConstant: 56).isActive = true
         third.topAnchor.constraint(equalTo: horizontalLine.bottomAnchor, constant: 31).isActive = true
-        third.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -59).isActive = true
+        third.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -53).isActive = true
     }
     
     override func configUI() {
