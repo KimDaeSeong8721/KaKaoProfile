@@ -56,6 +56,16 @@ class ProfileViewController: BaseViewController {
         return view
     }()
     
+    private let stackView : UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .horizontal
+        stackView.alignment = .center
+        stackView.distribution = .fillEqually
+        stackView.spacing = 62
+        return stackView
+    }()
+    
     // MARK: - Funcs
     override func render() {
         
@@ -89,24 +99,15 @@ class ProfileViewController: BaseViewController {
         let second = ImageLabelView(symbolName: "profileEditImg", textLabel: "프로필 편집")
         let third = ImageLabelView(symbolName: "profileStoryImg", textLabel: "카카오스토리")
         
-        view.addSubview(first)
-        first.widthAnchor.constraint(equalToConstant: 44).isActive = true
-        first.heightAnchor.constraint(equalToConstant: 56).isActive = true
-        first.topAnchor.constraint(equalTo: horizontalLine.bottomAnchor, constant: 31).isActive = true
-        first.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 53).isActive = true
+        view.addSubview(stackView)
         
-        view.addSubview(second)
-        second.widthAnchor.constraint(equalToConstant: 44).isActive = true
-        second.heightAnchor.constraint(equalToConstant: 56).isActive = true
-        second.topAnchor.constraint(equalTo: horizontalLine.bottomAnchor, constant: 31).isActive = true
-        second.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        
-        
-        view.addSubview(third)
-        third.widthAnchor.constraint(equalToConstant: 44).isActive = true
-        third.heightAnchor.constraint(equalToConstant: 56).isActive = true
-        third.topAnchor.constraint(equalTo: horizontalLine.bottomAnchor, constant: 31).isActive = true
-        third.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -53).isActive = true
+        stackView.topAnchor.constraint(equalTo: horizontalLine.bottomAnchor, constant: 20).isActive = true
+        stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 53).isActive = true
+        stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -53).isActive = true
+        // - 주의합시다..
+        stackView.addArrangedSubview(first)
+        stackView.addArrangedSubview(second)
+        stackView.addArrangedSubview(third)
     }
     
     override func configUI() {

@@ -51,6 +51,8 @@ class ImageLabelView: UIView {
         addSubview(textLabel)
         textLabel.topAnchor.constraint(equalTo: symbolImageView.bottomAnchor,constant: 11).isActive = true
         textLabel.leadingAnchor.constraint(equalTo: symbolImageView.leadingAnchor).isActive = true
+        textLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+
     }
     
     
