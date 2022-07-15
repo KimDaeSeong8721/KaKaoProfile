@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		35171CE82881868A0059F297 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35171CE72881868A0059F297 /* TabBarViewController.swift */; };
+		35171CEA288186DA0059F297 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35171CE9288186DA0059F297 /* SecondViewController.swift */; };
+		35171CEC288186E80059F297 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35171CEB288186E80059F297 /* ThirdViewController.swift */; };
+		35171CEE288186EF0059F297 /* FourthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35171CED288186EF0059F297 /* FourthViewController.swift */; };
+		35171CF0288186FC0059F297 /* FifthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35171CEF288186FC0059F297 /* FifthViewController.swift */; };
 		352D350A28795CD9004117D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D350928795CD9004117D7 /* AppDelegate.swift */; };
 		352D350C28795CD9004117D7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D350B28795CD9004117D7 /* SceneDelegate.swift */; };
 		352D350E28795CD9004117D7 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D350D28795CD9004117D7 /* StartViewController.swift */; };
@@ -19,6 +24,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		35171CE72881868A0059F297 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		35171CE9288186DA0059F297 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		35171CEB288186E80059F297 /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
+		35171CED288186EF0059F297 /* FourthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthViewController.swift; sourceTree = "<group>"; };
+		35171CEF288186FC0059F297 /* FifthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FifthViewController.swift; sourceTree = "<group>"; };
 		352D350628795CD9004117D7 /* KakaoProfile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KakaoProfile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		352D350928795CD9004117D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		352D350B28795CD9004117D7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -75,6 +85,10 @@
 			children = (
 				352D350D28795CD9004117D7 /* StartViewController.swift */,
 				352D35212879804F004117D7 /* ProfileViewController.swift */,
+				35171CE9288186DA0059F297 /* SecondViewController.swift */,
+				35171CEB288186E80059F297 /* ThirdViewController.swift */,
+				35171CED288186EF0059F297 /* FourthViewController.swift */,
+				35171CEF288186FC0059F297 /* FifthViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -86,6 +100,7 @@
 				352D35252879AAA0004117D7 /* Controllers */,
 				352D35272879AAD6004117D7 /* Views */,
 				352D35282879AAED004117D7 /* Cells */,
+				35171CE72881868A0059F297 /* TabBarViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -202,11 +217,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35171CF0288186FC0059F297 /* FifthViewController.swift in Sources */,
+				35171CE82881868A0059F297 /* TabBarViewController.swift in Sources */,
 				352D35222879804F004117D7 /* ProfileViewController.swift in Sources */,
+				35171CEC288186E80059F297 /* ThirdViewController.swift in Sources */,
 				352D352028795EC3004117D7 /* BaseViewController.swift in Sources */,
+				35171CEA288186DA0059F297 /* SecondViewController.swift in Sources */,
 				352D350E28795CD9004117D7 /* StartViewController.swift in Sources */,
 				352D3524287981BD004117D7 /* ImageLabelView.swift in Sources */,
 				352D350A28795CD9004117D7 /* AppDelegate.swift in Sources */,
+				35171CEE288186EF0059F297 /* FourthViewController.swift in Sources */,
 				352D351E28795E26004117D7 /* PersonTableViewCell.swift in Sources */,
 				352D350C28795CD9004117D7 /* SceneDelegate.swift in Sources */,
 			);

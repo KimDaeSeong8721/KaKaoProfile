@@ -40,7 +40,7 @@ class PersonTableViewCell: UITableViewCell {
         
         return label
     }()
-    
+    // MARK: - Init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         render()
@@ -58,6 +58,7 @@ class PersonTableViewCell: UITableViewCell {
         profileImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20).isActive = true
         profileImageView.widthAnchor.constraint(equalToConstant: 55).isActive = true
         profileImageView.heightAnchor.constraint(equalToConstant: 55).isActive = true
+        profileImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20).isActive = true
         
         contentView.addSubview(nameLabel)
         nameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20).isActive = true

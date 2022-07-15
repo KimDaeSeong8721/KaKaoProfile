@@ -66,6 +66,13 @@ class ProfileViewController: BaseViewController {
         return stackView
     }()
     
+    
+    // MARK: - View Life Cycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        dismissButton.addTarget(self, action: #selector(didDismissButton), for: .touchUpInside)
+        modalDismiss()
+    }
     // MARK: - Funcs
     override func render() {
         
@@ -100,11 +107,9 @@ class ProfileViewController: BaseViewController {
         let third = ImageLabelView(symbolName: "profileStoryImg", textLabel: "카카오스토리")
         
         view.addSubview(stackView)
-        
         stackView.topAnchor.constraint(equalTo: horizontalLine.bottomAnchor, constant: 20).isActive = true
         stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 53).isActive = true
-        stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -53).isActive = true
-        // - 주의합시다..
+        stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -53).isActive = true // - 주의합시다..
         stackView.addArrangedSubview(first)
         stackView.addArrangedSubview(second)
         stackView.addArrangedSubview(third)
@@ -112,12 +117,6 @@ class ProfileViewController: BaseViewController {
     
     override func configUI() {
         view.backgroundColor = .systemGray
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        dismissButton.addTarget(self, action: #selector(didDismissButton), for: .touchUpInside)
-        modalDismiss()
     }
     
     
@@ -161,3 +160,29 @@ class ProfileViewController: BaseViewController {
         }
     }
 }
+
+// MARK: - Preview
+#if DEBUG
+import SwiftUI
+struct ProfileViewControllerRepresentable: UIViewControllerRepresentable {
+    
+func updateUIViewController(_ uiView: UIViewController,context: Context) {
+        // leave this empty
+}
+@available(iOS 13.0.0, *)
+func makeUIViewController(context: Context) -> UIViewController{
+    ProfileViewController()
+    }
+}
+@available(iOS 13.0, *)
+struct ProfileViewControllerRepresentable_PreviewProvider: PreviewProvider {
+    static var previews: some View {
+        Group {
+            ProfileViewControllerRepresentable()
+                .ignoresSafeArea()
+                .previewDisplayName(/*@START_MENU_TOKEN@*/"Preview"/*@END_MENU_TOKEN@*/)
+                .previewDevice(PreviewDevice(rawValue: "iPhone 11"))
+        }
+        
+    }
+} #endif

@@ -10,15 +10,16 @@ import UIKit
 
 
 class StartViewController: BaseViewController {
-// MARK: - Properties
-    let tableView : UITableView = {
+    // MARK: - Properties
+    let tableView: UITableView = {
         let tableView = UITableView()
         tableView.register(PersonTableViewCell.self, forCellReuseIdentifier: PersonTableViewCell.identifier)
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.rowHeight = UITableView.automaticDimension // for dynamic cell
+        tableView.estimatedRowHeight = 50 // for dynamic cell
         return tableView
     }()
-    
-    
+    // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -64,9 +65,10 @@ extension StartViewController : UITableViewDataSource, UITableViewDelegate {
         vc.modalPresentationStyle = .overFullScreen
         present(vc, animated: true)
     }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 90
+        
+    // for dynamic cell
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
     
     
