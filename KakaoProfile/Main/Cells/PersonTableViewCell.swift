@@ -77,14 +77,6 @@ class PersonTableViewCell: BaseTableViewCell {
         stackView.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor,constant: 12).isActive = true
         stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -14).isActive = true
 
-        
-//        contentView.addSubview(nameLabel)
-//        nameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20).isActive = true
-//        nameLabel.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: 20).isActive = true
-//
-//        contentView.addSubview(subLabel)
-//        subLabel.topAnchor.constraint(equalTo: nameLabel.topAnchor, constant: 25).isActive = true
-//        subLabel.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: 20).isActive = true
     }
     
     override func configUI() {
