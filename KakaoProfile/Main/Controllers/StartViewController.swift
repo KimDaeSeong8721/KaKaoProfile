@@ -11,19 +11,26 @@ import UIKit
 
 class StartViewController: BaseViewController {
     // MARK: - Properties
+    
+
     let tableView: UITableView = {
         let tableView = UITableView()
         tableView.register(PersonTableViewCell.self, forCellReuseIdentifier: PersonTableViewCell.identifier)
+        tableView.register(FriendTableViewCell.self, forCellReuseIdentifier: FriendTableViewCell.identifier)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.rowHeight = UITableView.automaticDimension // for dynamic cell
         tableView.estimatedRowHeight = 50 // for dynamic cell
         return tableView
     }()
+    
+     
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        
+        
     }
 
     // MARK: - Funcs
@@ -39,7 +46,17 @@ class StartViewController: BaseViewController {
     }
     // 뷰 구성
     override func configUI() {
-        print("UI구성")
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        
+        let label = UILabel()
+        label.textColor = UIColor.black
+        label.font = UIFont.systemFont(ofSize: 22, weight: .semibold)
+        label.text = "친구"
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: label)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape"), style: .plain, target: self, action: nil)
+        self.navigationItem.rightBarButtonItem?.tintColor = .black
+
     }
 }
 
@@ -50,20 +67,32 @@ extension StartViewController : UITableViewDataSource, UITableViewDelegate {
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return DummyData.profileList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: PersonTableViewCell.identifier, for: indexPath) as? PersonTableViewCell else { return UITableViewCell() }
         
-        return cell
+        if indexPath.row == 0 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: PersonTableViewCell.identifier, for: indexPath) as? PersonTableViewCell else { return UITableViewCell() }
+            cell.configure(info: DummyData.profileList[indexPath.row])
+            return cell
+        } else {
+            tableView.separatorStyle = .none
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: FriendTableViewCell.identifier, for: indexPath) as? FriendTableViewCell else { return UITableViewCell() }
+            cell.configure(info: DummyData.profileList[indexPath.row])
+
+            return cell
+        }
+       
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
+        if indexPath.row == 0 {
         let vc = ProfileViewController()
         vc.modalPresentationStyle = .overFullScreen
         present(vc, animated: true)
+        }
     }
         
     // for dynamic cell

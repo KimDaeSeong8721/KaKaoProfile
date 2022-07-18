@@ -1,18 +1,18 @@
 //
-//  PersonTableViewCell.swift
+//  FriendTableViewCell.swift
 //  KakaoProfile
 //
-//  Created by DaeSeong on 2022/07/09.
+//  Created by DaeSeong on 2022/07/18.
 //
 
 import UIKit
 
-class PersonTableViewCell: BaseTableViewCell {
-    
+class FriendTableViewCell: BaseTableViewCell {
+
     // MARK: - Properties
-    static let identifier = "PersonTableViewCell"
+    static let identifier = "FriendTableViewCell"
     
-    private let profileImageView : UIImageView = {
+    private let profileImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.layer.masksToBounds = true
         imageView.backgroundColor = .secondarySystemBackground
@@ -21,19 +21,19 @@ class PersonTableViewCell: BaseTableViewCell {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
-    private let nameLabel : UILabel = {
+    private let nameLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
-        label.font = .systemFont(ofSize: 17, weight : .semibold)
+        label.font = .systemFont(ofSize: 15, weight : .semibold)
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
     }()
-    private let subLabel : UILabel = {
+    private let subLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
         label.textColor = .secondaryLabel
-        label.font = .systemFont(ofSize: 13, weight : .regular)
+        label.font = .systemFont(ofSize: 11, weight : .regular)
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
@@ -48,7 +48,6 @@ class PersonTableViewCell: BaseTableViewCell {
     //    stackView.spacing = 62
         return stackView
     }()
-    
     // MARK: - Init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -62,10 +61,10 @@ class PersonTableViewCell: BaseTableViewCell {
     // MARK: - Funcs
     override func render() {
         contentView.addSubview(profileImageView)
-        profileImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 24).isActive = true
+        profileImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8).isActive = true
         profileImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 14).isActive = true
-        profileImageView.widthAnchor.constraint(equalToConstant: 60).isActive = true
-        profileImageView.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        profileImageView.widthAnchor.constraint(equalToConstant: 45).isActive = true
+        profileImageView.heightAnchor.constraint(equalToConstant: 45).isActive = true
         profileImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -14).isActive = true
         
         
@@ -77,7 +76,6 @@ class PersonTableViewCell: BaseTableViewCell {
         stackView.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor,constant: 12).isActive = true
         stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -14).isActive = true
 
-        
 //        contentView.addSubview(nameLabel)
 //        nameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20).isActive = true
 //        nameLabel.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: 20).isActive = true
@@ -88,7 +86,6 @@ class PersonTableViewCell: BaseTableViewCell {
     }
     
     override func configUI() {
-        
     }
     
     public func configure(info: Information) {

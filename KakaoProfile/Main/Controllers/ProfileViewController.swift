@@ -8,9 +8,8 @@
 import UIKit
 
 class ProfileViewController: BaseViewController {
-    
+
     // MARK: - Properties
-    
     var viewTranslation = CGPoint(x: 0, y: 0)
     var viewVelocity = CGPoint(x: 0, y: 0)
     
@@ -22,7 +21,7 @@ class ProfileViewController: BaseViewController {
     }()
     private let profileImageView : UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "dora")
+        imageView.image = UIImage(named: "miller")
         imageView.layer.masksToBounds = true
         imageView.backgroundColor = .secondarySystemBackground
         imageView.layer.cornerRadius = 30
@@ -33,7 +32,7 @@ class ProfileViewController: BaseViewController {
     private let nameLabel : UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
-        label.text = "듀나"
+        label.text = "밀러"
         label.font = .systemFont(ofSize: 22, weight : .semibold)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .white
@@ -42,7 +41,7 @@ class ProfileViewController: BaseViewController {
     private let subLabel : UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
-        label.text = "⛴포항항"
+        label.text = "⛴포항이다"
         label.textColor = .white
         label.font = .systemFont(ofSize: 15, weight : .regular)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -56,7 +55,30 @@ class ProfileViewController: BaseViewController {
         return view
     }()
     
-    private let stackView : UIStackView = {
+    private lazy var firstButton: UIView = {
+       let view = ImageLabelView(symbolName: "profileTalkImg",
+                                 textLabel: "나와의 채팅")
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self,
+                                                         action: #selector(firstButtonTapped)))
+        return view
+    }()
+    private lazy var secondButton: UIView = {
+        let view = ImageLabelView(symbolName: "profileEditImg",
+                                  textLabel: "프로필 편집")
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self,
+                                                         action: #selector(secondButtonTapped)))
+
+        return view
+    }()
+    private lazy var thirdButton: UIView = {
+        let view = ImageLabelView(symbolName: "profileStoryImg",
+                                  textLabel: "카카오스토리")
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self,
+                                                         action: #selector(thirdButtonTapped)))
+        return view
+    }()
+    
+    private lazy var  stackView : UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
@@ -72,6 +94,9 @@ class ProfileViewController: BaseViewController {
         super.viewDidLoad()
         dismissButton.addTarget(self, action: #selector(didDismissButton), for: .touchUpInside)
         modalDismiss()
+        
+        
+        
     }
     // MARK: - Funcs
     override func render() {
@@ -102,17 +127,17 @@ class ProfileViewController: BaseViewController {
         horizontalLine.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         horizontalLine.heightAnchor.constraint(equalToConstant: 1).isActive = true
         
-        let first = ImageLabelView(symbolName: "profileTalkImg", textLabel: "나와의 채팅")
-        let second = ImageLabelView(symbolName: "profileEditImg", textLabel: "프로필 편집")
-        let third = ImageLabelView(symbolName: "profileStoryImg", textLabel: "카카오스토리")
+
         
         view.addSubview(stackView)
         stackView.topAnchor.constraint(equalTo: horizontalLine.bottomAnchor, constant: 20).isActive = true
         stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 53).isActive = true
         stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -53).isActive = true // - 주의합시다..
-        stackView.addArrangedSubview(first)
-        stackView.addArrangedSubview(second)
-        stackView.addArrangedSubview(third)
+        stackView.addArrangedSubview(firstButton)
+
+
+        stackView.addArrangedSubview(secondButton)
+        stackView.addArrangedSubview(thirdButton)
     }
     
     override func configUI() {
@@ -158,6 +183,24 @@ class ProfileViewController: BaseViewController {
         default:
             break
         }
+    }
+    
+    @objc func firstButtonTapped() {
+    }
+    @objc func secondButtonTapped() {
+        let vc = MChangeViewController()
+        vc.delegate = self
+        present(vc, animated: true)
+    }
+    @objc func thirdButtonTapped() {
+    }
+    
+   
+}
+ // MARK: - Extension
+extension ProfileViewController : MessageChangeDelegate {
+    func changeStatusMessage(content: String) {
+        subLabel.text = content
     }
 }
 
