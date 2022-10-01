@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FifthViewController: UIViewController {
+class FifthViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -15,6 +15,23 @@ class FifthViewController: UIViewController {
 
     }
     
+    override func render() {
+        
+    }
+    
+    override func configUI() {
+        configureNavBar()
+        
+    }
+    func configureNavBar(){
+        let label = UILabel()
+        label.textColor = UIColor.black
+        label.font = UIFont.systemFont(ofSize: 22, weight: .semibold)
+        label.text = "더보기"
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: label)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape"), style: .plain, target: self, action: nil)
+        self.navigationItem.rightBarButtonItem?.tintColor = .black
+    }
 
 
 }

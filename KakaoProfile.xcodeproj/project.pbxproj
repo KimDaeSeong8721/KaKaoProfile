@@ -14,7 +14,7 @@
 		35171CF0288186FC0059F297 /* FifthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35171CEF288186FC0059F297 /* FifthViewController.swift */; };
 		352D350A28795CD9004117D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D350928795CD9004117D7 /* AppDelegate.swift */; };
 		352D350C28795CD9004117D7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D350B28795CD9004117D7 /* SceneDelegate.swift */; };
-		352D350E28795CD9004117D7 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D350D28795CD9004117D7 /* StartViewController.swift */; };
+		352D350E28795CD9004117D7 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D350D28795CD9004117D7 /* FirstViewController.swift */; };
 		352D351328795CDA004117D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 352D351228795CDA004117D7 /* Assets.xcassets */; };
 		352D351628795CDA004117D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 352D351428795CDA004117D7 /* LaunchScreen.storyboard */; };
 		352D351E28795E26004117D7 /* PersonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D351D28795E26004117D7 /* PersonTableViewCell.swift */; };
@@ -37,7 +37,7 @@
 		352D350628795CD9004117D7 /* KakaoProfile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KakaoProfile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		352D350928795CD9004117D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		352D350B28795CD9004117D7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		352D350D28795CD9004117D7 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		352D350D28795CD9004117D7 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		352D351228795CDA004117D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		352D351528795CDA004117D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		352D351728795CDA004117D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -95,12 +95,12 @@
 		352D35252879AAA0004117D7 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				352D350D28795CD9004117D7 /* StartViewController.swift */,
-				352D35212879804F004117D7 /* ProfileViewController.swift */,
+				352D350D28795CD9004117D7 /* FirstViewController.swift */,
 				35171CE9288186DA0059F297 /* SecondViewController.swift */,
 				35171CEB288186E80059F297 /* ThirdViewController.swift */,
 				35171CED288186EF0059F297 /* FourthViewController.swift */,
 				35171CEF288186FC0059F297 /* FifthViewController.swift */,
+				352D35212879804F004117D7 /* ProfileViewController.swift */,
 				3558AAE428856ABC00539C66 /* MChangeViewController.swift */,
 			);
 			path = Controllers;
@@ -112,7 +112,6 @@
 				352D352B2879AB75004117D7 /* Base */,
 				352D35252879AAA0004117D7 /* Controllers */,
 				352D35272879AAD6004117D7 /* Views */,
-				352D35282879AAED004117D7 /* Cells */,
 				35171CE72881868A0059F297 /* TabBarViewController.swift */,
 			);
 			path = Main;
@@ -121,6 +120,7 @@
 		352D35272879AAD6004117D7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				352D35282879AAED004117D7 /* Cells */,
 				352D3523287981BD004117D7 /* ImageLabelView.swift */,
 			);
 			path = Views;
@@ -257,7 +257,7 @@
 				3558AAE528856ABC00539C66 /* MChangeViewController.swift in Sources */,
 				352D352028795EC3004117D7 /* BaseViewController.swift in Sources */,
 				35171CEA288186DA0059F297 /* SecondViewController.swift in Sources */,
-				352D350E28795CD9004117D7 /* StartViewController.swift in Sources */,
+				352D350E28795CD9004117D7 /* FirstViewController.swift in Sources */,
 				352D3524287981BD004117D7 /* ImageLabelView.swift in Sources */,
 				352D350A28795CD9004117D7 /* AppDelegate.swift in Sources */,
 				35171CEE288186EF0059F297 /* FourthViewController.swift in Sources */,

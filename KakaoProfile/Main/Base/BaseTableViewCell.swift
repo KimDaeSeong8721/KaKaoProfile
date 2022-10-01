@@ -28,5 +28,6 @@ class BaseTableViewCell: UITableViewCell {
     }
     // UI 구성
     func configUI() {
+        
     }
 }

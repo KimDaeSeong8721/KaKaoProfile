@@ -12,15 +12,16 @@ struct DummyData {
     
     
     static var profileList:[Information] = [
-    Information(imageName: "miller", name: "밀러", subTitle: "We Are Makers"),
-    Information(imageName: "Rectangle 18", name: "스킵", subTitle: "디자인 천재가 될거야"),
-    Information(imageName: "Rectangle 19", name: "닉", subTitle: "오늘은 꼭 수영 가야지"),
-    Information(imageName: "Rectangle 20", name: "스누피", subTitle: "불타오르네"),
-    Information(imageName: "Rectangle 21", name: "데이크", subTitle: "애플 내가 먹는다."),
-    Information(imageName: "Rectangle 22", name: "진저", subTitle: "숨참고~ 진저~ 다이브~~~"),
-    Information(imageName: "Rectangle 23", name: "호야", subTitle: "에어드랍 재밌다는 뜻이에용~"),
-    Information(imageName: "Rectangle 24", name: "비트", subTitle: "나는 싱어송비트"),
-    Information(imageName: "Rectangle 25", name: "듀나", subTitle: "내이름은 깃듀나")
+    Information(imageName: "miller", name: "밀러", subTitle: "We Are 4/4"),
+    Information(imageName: "milli", name: "밀리", subTitle: "디자인 천재가 될거야"),
+    Information(imageName: "monica", name: "모니카", subTitle: "나는야 모나카"),
+    Information(imageName: "hans", name: "한스", subTitle: "허허 안녕하세요 한스입니다"),
+    Information(imageName: "cozy", name: "코지", subTitle: "나는 야망있는 남자야 ㅎ."),
+    Information(imageName: "maeve", name: "메이브", subTitle: "나는 UX디자인의 한 획을 그을거야"),
+    Information(imageName: "woogy", name: "우기", subTitle: "한컴파일은 내게 맡겨!"),
+    Information(imageName: "dani", name: "다니", subTitle: "모니카는 나보다 매운 거 못먹어 ㅎ.."),
+
+
 
     ]
 }

@@ -14,7 +14,7 @@ class TabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let vc1 =  UINavigationController(rootViewController: StartViewController())
+        let vc1 =  UINavigationController(rootViewController: FirstViewController())
         let vc2 =  UINavigationController(rootViewController: SecondViewController())
         let vc3 =  UINavigationController(rootViewController: ThirdViewController())
         let vc4 =  UINavigationController(rootViewController: FourthViewController())

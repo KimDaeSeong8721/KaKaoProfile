@@ -49,7 +49,6 @@ class ImageLabelView: UIStackView {
     }
     
  
-    
     // MARK: - Funcs
     private func render() {
         self.addArrangedSubview(symbolImageView)

@@ -13,7 +13,8 @@ class ProfileViewController: BaseViewController {
     var viewTranslation = CGPoint(x: 0, y: 0)
     var viewVelocity = CGPoint(x: 0, y: 0)
     
-    private let dismissButton : UIButton = {
+
+    private let  dismissButton : UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "profileCloseBtn"), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -21,7 +22,6 @@ class ProfileViewController: BaseViewController {
     }()
     private let profileImageView : UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "miller")
         imageView.layer.masksToBounds = true
         imageView.backgroundColor = .secondarySystemBackground
         imageView.layer.cornerRadius = 30
@@ -32,7 +32,6 @@ class ProfileViewController: BaseViewController {
     private let nameLabel : UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
-        label.text = "밀러"
         label.font = .systemFont(ofSize: 22, weight : .semibold)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .white
@@ -41,7 +40,6 @@ class ProfileViewController: BaseViewController {
     private let subLabel : UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
-        label.text = "⛴포항이다"
         label.textColor = .white
         label.font = .systemFont(ofSize: 15, weight : .regular)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -78,7 +76,7 @@ class ProfileViewController: BaseViewController {
         return view
     }()
     
-    private lazy var  stackView : UIStackView = {
+    private let stackView : UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
@@ -89,46 +87,43 @@ class ProfileViewController: BaseViewController {
     }()
     
     
-    // MARK: - View Life Cycle
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         dismissButton.addTarget(self, action: #selector(didDismissButton), for: .touchUpInside)
         modalDismiss()
-        
-        
-        
     }
-    // MARK: - Funcs
+
     override func render() {
-        
+
         view.addSubview(dismissButton)
         dismissButton.topAnchor.constraint(equalTo: view.topAnchor,constant: 40).isActive = true
         dismissButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor,constant: 10).isActive = true
         dismissButton.widthAnchor.constraint(equalToConstant: 44).isActive = true
         dismissButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
-        
+
         view.addSubview(profileImageView)
         profileImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         profileImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 512).isActive = true
         profileImageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
         profileImageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        
+
         view.addSubview(nameLabel)
         nameLabel.topAnchor.constraint(equalTo: profileImageView.bottomAnchor, constant: 9).isActive = true
         nameLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        
+
         view.addSubview(subLabel)
         subLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 7).isActive = true
         subLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        
+
         view.addSubview(horizontalLine)
         horizontalLine.topAnchor.constraint(equalTo: subLabel.bottomAnchor, constant: 27).isActive = true
         horizontalLine.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         horizontalLine.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         horizontalLine.heightAnchor.constraint(equalToConstant: 1).isActive = true
-        
 
-        
+
+
         view.addSubview(stackView)
         stackView.topAnchor.constraint(equalTo: horizontalLine.bottomAnchor, constant: 20).isActive = true
         stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 53).isActive = true
@@ -139,12 +134,14 @@ class ProfileViewController: BaseViewController {
         stackView.addArrangedSubview(secondButton)
         stackView.addArrangedSubview(thirdButton)
     }
-    
+
     override func configUI() {
         view.backgroundColor = .systemGray
     }
-    
-    
+
+
+    // MARK: - Funcs
+
     @objc private func didDismissButton(){
         dismiss(animated: true)
     }
@@ -194,7 +191,12 @@ class ProfileViewController: BaseViewController {
     }
     @objc func thirdButtonTapped() {
     }
-    
+
+    func cofigProfile(info: Information) {
+        profileImageView.image = info.makeImage()
+        nameLabel.text = info.name
+        subLabel.text = info.subTitle
+    }
    
 }
  // MARK: - Extension
@@ -203,29 +205,3 @@ extension ProfileViewController : MessageChangeDelegate {
         subLabel.text = content
     }
 }
-
-// MARK: - Preview
-#if DEBUG
-import SwiftUI
-struct ProfileViewControllerRepresentable: UIViewControllerRepresentable {
-    
-func updateUIViewController(_ uiView: UIViewController,context: Context) {
-        // leave this empty
-}
-@available(iOS 13.0.0, *)
-func makeUIViewController(context: Context) -> UIViewController{
-    ProfileViewController()
-    }
-}
-@available(iOS 13.0, *)
-struct ProfileViewControllerRepresentable_PreviewProvider: PreviewProvider {
-    static var previews: some View {
-        Group {
-            ProfileViewControllerRepresentable()
-                .ignoresSafeArea()
-                .previewDisplayName(/*@START_MENU_TOKEN@*/"Preview"/*@END_MENU_TOKEN@*/)
-                .previewDevice(PreviewDevice(rawValue: "iPhone 11"))
-        }
-        
-    }
-} #endif
