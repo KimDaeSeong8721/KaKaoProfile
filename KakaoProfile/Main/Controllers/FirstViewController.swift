@@ -10,25 +10,28 @@ import UIKit
 
 
 class FirstViewController: BaseViewController {
+
+
     // MARK: - Properties
     
 
     private let tableView: UITableView = {
         let tableView = UITableView()
-        tableView.register(PersonTableViewCell.self, forCellReuseIdentifier: PersonTableViewCell.identifier)
-        tableView.register(FriendTableViewCell.self, forCellReuseIdentifier: FriendTableViewCell.identifier)
+        tableView.register(cell: PersonTableViewCell.self)
+        tableView.register(cell: FriendTableViewCell.self)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
 
-     
+
     // MARK: - Life Cycle
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        
-        
+
     }
 
     override func render() {
@@ -43,27 +46,14 @@ class FirstViewController: BaseViewController {
 
     override func configUI() {
         super.configUI()
-        configureNavBar()
 
     }
 
-
-    // MARK: - Funcs
-
-
-    func configureNavBar(){
-        let label = UILabel()
-        label.textColor = UIColor.black
-        label.font = UIFont.systemFont(ofSize: 22, weight: .semibold)
-        label.text = "친구"
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: label)
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape"), style: .plain, target: self, action: nil)
-        self.navigationItem.rightBarButtonItem?.tintColor = .black
-    }
 }
 
 
-// MARK: - Extenstions
+// MARK: - UITableViewDataSource
+
 
 extension FirstViewController: UITableViewDataSource {
     
@@ -75,29 +65,34 @@ extension FirstViewController: UITableViewDataSource {
     }
 }
 
+
+// MARK: - UITableViewDelegate
+
+
 extension FirstViewController : UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.row == 0 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: PersonTableViewCell.identifier, for: indexPath) as? PersonTableViewCell else { return UITableViewCell() }
+            let cell = tableView.dequeueReusableCell(withType: PersonTableViewCell.self, for: indexPath)
             cell.configure(info: DummyData.profileList[indexPath.row])
             return cell
         } else {
             tableView.separatorStyle = .none
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: FriendTableViewCell.identifier, for: indexPath) as? FriendTableViewCell else { return UITableViewCell() }
+            let cell = tableView.dequeueReusableCell(withType: FriendTableViewCell.self, for: indexPath)
             cell.configure(info: DummyData.profileList[indexPath.row])
             return cell
         }
-       
+        
     }
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if indexPath.row == 0 {
-        let vc = ProfileViewController()
-        vc.modalPresentationStyle = .overFullScreen
+            let vc = ProfileViewController()
+            vc.modalPresentationStyle = .overFullScreen
             vc.cofigProfile(info:  DummyData.profileList[indexPath.row])
-        present(vc, animated: true)
+            present(vc, animated: true)
         }
     }
 

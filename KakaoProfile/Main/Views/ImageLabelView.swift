@@ -10,8 +10,11 @@ import UIKit
 
 
 class ImageLabelView: UIStackView {
-    
+
+
     // MARK: - Properties
+
+
     private let symbolImageView : UIImageView = {
         let imageView = UIImageView()
         imageView.layer.masksToBounds = true
@@ -28,7 +31,6 @@ class ImageLabelView: UIStackView {
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         label.isUserInteractionEnabled = true
-
         return label
     }()
     
@@ -50,6 +52,8 @@ class ImageLabelView: UIStackView {
     
  
     // MARK: - Funcs
+
+    
     private func render() {
         self.addArrangedSubview(symbolImageView)
         self.addArrangedSubview(textLabel)

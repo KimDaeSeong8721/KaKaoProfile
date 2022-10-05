@@ -9,7 +9,10 @@ import UIKit
 
 class ProfileViewController: BaseViewController {
 
+
     // MARK: - Properties
+
+
     var viewTranslation = CGPoint(x: 0, y: 0)
     var viewVelocity = CGPoint(x: 0, y: 0)
     
@@ -20,6 +23,7 @@ class ProfileViewController: BaseViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
+
     private let profileImageView : UIImageView = {
         let imageView = UIImageView()
         imageView.layer.masksToBounds = true
@@ -29,6 +33,7 @@ class ProfileViewController: BaseViewController {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
+
     private let nameLabel : UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
@@ -37,6 +42,7 @@ class ProfileViewController: BaseViewController {
         label.textColor = .white
         return label
     }()
+
     private let subLabel : UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
@@ -46,6 +52,7 @@ class ProfileViewController: BaseViewController {
         
         return label
     }()
+
     private let horizontalLine : UIView = {
         let view = UIView()
         view.backgroundColor = .systemGray4
@@ -53,13 +60,10 @@ class ProfileViewController: BaseViewController {
         return view
     }()
     
-    private lazy var firstButton: UIView = {
-       let view = ImageLabelView(symbolName: "profileTalkImg",
+    private let firstButton: UIView =  ImageLabelView(symbolName: "profileTalkImg",
                                  textLabel: "나와의 채팅")
-        view.addGestureRecognizer(UITapGestureRecognizer(target: self,
-                                                         action: #selector(firstButtonTapped)))
-        return view
-    }()
+
+
     private lazy var secondButton: UIView = {
         let view = ImageLabelView(symbolName: "profileEditImg",
                                   textLabel: "프로필 편집")
@@ -68,13 +72,10 @@ class ProfileViewController: BaseViewController {
 
         return view
     }()
-    private lazy var thirdButton: UIView = {
-        let view = ImageLabelView(symbolName: "profileStoryImg",
+
+    private let thirdButton: UIView = ImageLabelView(symbolName: "profileStoryImg",
                                   textLabel: "카카오스토리")
-        view.addGestureRecognizer(UITapGestureRecognizer(target: self,
-                                                         action: #selector(thirdButtonTapped)))
-        return view
-    }()
+
     
     private let stackView : UIStackView = {
         let stackView = UIStackView()
@@ -88,9 +89,11 @@ class ProfileViewController: BaseViewController {
     
     
     // MARK: - Life Cycle
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        dismissButton.addTarget(self, action: #selector(didDismissButton), for: .touchUpInside)
+        addTargets()
         modalDismiss()
     }
 
@@ -122,15 +125,11 @@ class ProfileViewController: BaseViewController {
         horizontalLine.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         horizontalLine.heightAnchor.constraint(equalToConstant: 1).isActive = true
 
-
-
         view.addSubview(stackView)
         stackView.topAnchor.constraint(equalTo: horizontalLine.bottomAnchor, constant: 20).isActive = true
         stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 53).isActive = true
         stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -53).isActive = true // - 주의합시다..
         stackView.addArrangedSubview(firstButton)
-
-
         stackView.addArrangedSubview(secondButton)
         stackView.addArrangedSubview(thirdButton)
     }
@@ -142,14 +141,24 @@ class ProfileViewController: BaseViewController {
 
     // MARK: - Funcs
 
+    private func addTargets() {
+        dismissButton.addTarget(self, action: #selector(didDismissButton), for: .touchUpInside)
+    }
+
+    private func modalDismiss() {
+        view.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handleDismiss)))
+    }
+
+    func cofigProfile(info: Information) {
+        profileImageView.image = info.makeImage()
+        nameLabel.text = info.name
+        subLabel.text = info.subTitle
+    }
+
     @objc private func didDismissButton(){
         dismiss(animated: true)
     }
-    
-    func modalDismiss() {
-        view.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handleDismiss)))
-    }
-    
+
     @objc func handleDismiss(_ sender: UIPanGestureRecognizer) {
         viewTranslation = sender.translation(in: view) // 뷰가 이동한 위치 저장
         viewVelocity = sender.velocity(in: view) //view가 이동한 방향 저장
@@ -181,25 +190,16 @@ class ProfileViewController: BaseViewController {
             break
         }
     }
-    
-    @objc func firstButtonTapped() {
-    }
+
     @objc func secondButtonTapped() {
         let vc = MChangeViewController()
         vc.delegate = self
         present(vc, animated: true)
     }
-    @objc func thirdButtonTapped() {
-    }
 
-    func cofigProfile(info: Information) {
-        profileImageView.image = info.makeImage()
-        nameLabel.text = info.name
-        subLabel.text = info.subTitle
-    }
-   
 }
- // MARK: - Extension
+ // MARK: - MessageChangeDelegate
+
 extension ProfileViewController : MessageChangeDelegate {
     func changeStatusMessage(content: String) {
         subLabel.text = content

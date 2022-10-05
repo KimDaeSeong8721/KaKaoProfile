@@ -8,9 +8,10 @@
 import UIKit
 
 class PersonTableViewCell: BaseTableViewCell {
-    
+
+
     // MARK: - Properties
-    static let identifier = "PersonTableViewCell"
+
 
     private let profileImageView : UIImageView = {
         let imageView = UIImageView()

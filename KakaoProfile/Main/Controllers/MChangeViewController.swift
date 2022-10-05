@@ -21,7 +21,6 @@ class MChangeViewController: BaseViewController {
         label.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
         label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
-        
         return label
     }()
     
@@ -32,7 +31,6 @@ class MChangeViewController: BaseViewController {
         textField.backgroundColor = .systemGray6
         textField.borderStyle = .roundedRect
         textField.layer.cornerRadius = 10
-
         return textField
     }()
     
@@ -47,10 +45,9 @@ class MChangeViewController: BaseViewController {
         return button
     }()
     
-    // MARK: - View Life Cycle
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
     
     override func render() {

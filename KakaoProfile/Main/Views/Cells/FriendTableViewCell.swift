@@ -9,8 +9,9 @@ import UIKit
 
 class FriendTableViewCell: BaseTableViewCell {
 
+
     // MARK: - Properties
-    static let identifier = "FriendTableViewCell"
+
     
     private let profileImageView: UIImageView = {
         let imageView = UIImageView()
@@ -56,8 +57,11 @@ class FriendTableViewCell: BaseTableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
+
     // MARK: - Funcs
+
+
     override func render() {
         contentView.addSubview(profileImageView)
         profileImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8).isActive = true
