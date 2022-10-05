@@ -2,8 +2,6 @@
 
 ## 🔵 카카오톡 프로필 창 클론
 
-<img width="267" alt="image" src="https://user-images.githubusercontent.com/69894461/178142997-e4b5f368-4604-473c-91e0-e63b13daccba.png">
-
 - codebase 구현
 
 ### 중점 기능
